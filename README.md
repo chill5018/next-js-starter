@@ -7,9 +7,9 @@ Find the most recent version of this guide at [here](https://github.com/segmenti
 - [Questions? Feedback?](#questions-feedback)
 - [Folder Structure](#folder-structure)
 - [Available Scripts](#available-scripts)
-  - [npm run dev](#npm-run-dev)
-  - [npm run build](#npm-run-build)
-  - [npm run start](#npm-run-start)
+  - [yarn dev](#yarn-dev)
+  - [yarn build](#yarn-build)
+  - [yarn start](#yarn-start)
 - [Using CSS](#using-css)
 - [Adding Components](#adding-components)
 - [Fetching Data](#fetching-data)
@@ -30,12 +30,20 @@ After creating an app, it should look something like:
 ```
 .
 ├── README.md
-├── components
-│   ├── head.js
-│   └── nav.js
-├── next.config.js
+├── .jest
+├── .storybook
 ├── node_modules
 │   ├── [...]
+├── src
+│   └── components
+│     ├── head.js
+│     └── nav.js
+│   └── util
+│     └── withTests.js
+├── next.config.js
+├── jest.config.js
+├── jest.setup.js
+├── postcss.config.js
 ├── package.json
 ├── pages
 │   └── index.js
@@ -63,7 +71,7 @@ Read more about [Next's Routing](https://github.com/zeit/next.js#routing)
 
 In the project directory, you can run:
 
-### `npm run dev`
+### `yarn dev`
 
 Runs the app in the development mode.<br>
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
@@ -71,12 +79,12 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.<br>
 You will also see any errors in the console.
 
-### `npm run build`
+### `yarn build`
 
 Builds the app for production to the `.next` folder.<br>
 It correctly bundles React in production mode and optimizes the build for the best performance.
 
-### `npm run start`
+### `yarn start`
 
 Starts the application in production mode.
 The application should be compiled with \`next build\` first.
