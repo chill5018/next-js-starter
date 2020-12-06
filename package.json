@@ -1,65 +1,67 @@
 {
   "name": "next-js-starter",
   "version": "2.0.0",
-  "private": true,
   "scripts": {
-    "dev": "next",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "storybook": "npm run test:unit:output && start-storybook -p 6006",
-    "test:unit:output": "jest --json --outputFile=jest-test-results.json",
-    "test": "NODE_ENV=test jest"
+    "type-check": "tsc --pretty --noEmit",
+    "format": "prettier --write .",
+    "lint": "eslint . --ext ts --ext tsx --ext js",
+    "test": "jest",
+    "test-all": "yarn lint && yarn type-check && yarn test"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "pre-push": "yarn run type-check"
+    }
+  },
+  "lint-staged": {
+    "*.@(ts|tsx)": [
+      "yarn lint",
+      "yarn format"
+    ]
   },
   "dependencies": {
-    "@babel/plugin-transform-runtime": "^7.12.1",
-    "@zeit/next-sass": "^1.0.1",
-    "babel-core": "^6.26.3",
-    "babel-jest": "^26.6.3",
-    "babel-plugin-inline-dotenv": "^1.6.0",
-    "babel-plugin-inline-react-svg": "^1.1.2",
-    "babel-plugin-module-resolver": "^4.0.0",
-    "babel-plugin-transform-class-properties": "^6.24.1",
-    "babel-plugin-transform-inline-environment-variables": "^0.4.3",
-    "babel-plugin-wrap-in-js": "^1.1.1",
-    "enzyme": "^3.11.0",
-    "enzyme-adapter-react-16": "^1.15.5",
-    "jest": "^26.6.3",
-    "next": "^10.0.3",
-    "path": "^0.12.7",
+    "@emotion/css": "^11.0.0",
+    "@emotion/react": "^11.1.1",
+    "@emotion/styled": "^11.0.0",
+    "next": "latest",
     "react": "^17.0.1",
     "react-dom": "^17.0.1"
   },
   "devDependencies": {
-    "@storybook/addon-actions": "^6.1.9",
-    "@storybook/addon-jest": "^6.1.9",
-    "@storybook/addon-knobs": "^6.1.9",
-    "@storybook/addon-links": "^6.1.9",
-    "@storybook/addons": "^6.1.9",
-    "@storybook/react": "^6.1.9",
-    "autoprefixer": "^10.0.4",
-    "css-loader": "^5.0.1",
-    "file-loader": "^6.2.0",
-    "glob": "^7.1.6",
-    "next-images": "^1.6.2",
-    "node-sass": "^5.0.0",
-    "path-match": "^1.2.4",
-    "postcss-easy-import": "^3.0.0",
-    "postcss-loader": "^4.1.0",
-    "raw-loader": "^4.0.2",
-    "sass-loader": "^10.1.0",
-    "style-loader": "^2.0.0",
-    "url-loader": "^4.1.1",
-    "webpack-merge": "^5.4.0"
-  },
-  "jest": {
-    "collectCoverageFrom": [
-      "src/**/*.{js,jsx}",
-      "!src/**/*.scss",
-      "!src/**/index.{js,jsx}",
-      "!src/**/*.stories.{js,jsx}",
-      "!<rootDir>/node_modules/",
-      "!<rootDir>/path/to/dir/"
-    ]
+    "@emotion/babel-plugin": "^11.0.0",
+    "@storybook/addon-controls": "^6.1.10",
+    "@storybook/addon-essentials": "6.1.10",
+    "@storybook/addon-links": "6.1.10",
+    "@storybook/react": "6.1.10",
+    "@testing-library/react": "^11.2.2",
+    "@types/jest": "^26.0.16",
+    "@types/node": "^14.14.10",
+    "@types/react": "^17.0.0",
+    "@typescript-eslint/eslint-plugin": "^4.9.0",
+    "@typescript-eslint/parser": "^4.9.0",
+    "babel-jest": "^26.6.3",
+    "babel-loader": "^8.2.2",
+    "eslint": "^7.15.0",
+    "eslint-config-prettier": "^6.15.0",
+    "@emotion/eslint-plugin": "^11.0.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-react": "^7.21.5",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "eslint-plugin-sort-keys-fix": "^1.1.1",
+    "eslint-plugin-typescript-sort-keys": "^1.5.0",
+    "husky": "^4.3.0",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^26.6.3",
+    "jest-watch-typeahead": "^0.6.1",
+    "lint-staged": "^10.5.3",
+    "prettier": "^2.2.1",
+    "typescript": "^4.1.2",
+    "typescript-styled-plugin": "^0.15.0"
   }
 }
